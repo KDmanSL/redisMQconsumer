@@ -1,17 +1,24 @@
 Spring:
   application:
-    name: Baidu-MQ-consumer
+    name: Baidu-redis-MQ-consumer
   servlet:
     multipart:
       max-file-size: 50MB
       max-request-size: 50MB
-  rabbitmq:
-    host: 119.3.158.9
-    port: 5672
-    username: usst104
-    password: 123456
-    virtualHost: /
+  data: # redis
+    redis:
+      host: 119.3.158.9
+      database: 2
+      password: redis
+      lettuce:
+        pool:
+          max-active: 20
+          max-idle: 20
+          min-idle: 1
+          time-between-eviction-runs: 10s
 server:
   tomcat:
     max-swallow-size: 100MB
   port: 8081
+web:
+  upload-path: src/main/resources/images/
